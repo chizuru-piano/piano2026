@@ -5,140 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第17回 ピアノ発表会 | 第17届 钢琴发表会</title>
     <style>
-        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; line-height: 1.7; color: #333; max-width: 640px; margin: 0 auto; padding: 20px; background-color: #f5f5f0; }
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; line-height: 1.7; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
         
-        /* 通用標題樣式 */
-        .main-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #d4af37; }
-        .main-title-jp { font-size: 1.4rem; font-weight: bold; color: #8b4513; display: block; margin-bottom: 8px;}
-        .main-title-zh { font-size: 1.2rem; color: #a0522d; }
+        /* 切换按钮样式 */
+        .lang-switcher { text-align: right; margin-bottom: 20px; }
+        .sw-btn { background-color: #d4af37; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .sw-btn:hover { background-color: #b8962e; }
 
-        /* 區塊容器樣式 */
-        .section-container { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 30px; }
-        .section-title { text-align: center; font-size: 1.2rem; color: #d4af37; margin-bottom: 20px; font-weight: bold; position: relative; }
-        .section-title::after { content: ""; display: block; width: 50px; height: 2px; background: #d4af37; margin: 10px auto 0; }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid #d4af37; }
+        .title { font-size: 1.4rem; font-weight: bold; color: #8b4513; }
 
-        /* 內容行樣式 */
-        .info-row { margin-bottom: 18px; border-bottom: 1px dashed #eee; padding-bottom: 12px; }
-        .info-row:last-child { border-bottom: none; }
-        .label { font-weight: bold; color: #8b4513; font-size: 1rem; display: block; margin-bottom: 4px; }
-        .content { font-size: 1.05rem; padding-left: 10px; }
+        .content-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .info-row { margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
+        .label { font-weight: bold; color: #8b4513; display: block; margin-bottom: 3px; }
         
-        /* 地圖鏈接重點樣式 */
-        .map-link-box { margin-top: 15px; text-align: center; background-color: #fffaf0; padding: 10px; border-radius: 8px; border: 1px solid #e0d0a0;}
-        .map-link { color: #d4af37; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
-        .map-icon { margin-right: 8px; font-size: 1.3rem; }
+        /* 地图按钮 */
+        .map-btn { display: block; text-align: center; background-color: #fffaf0; color: #d4af37; text-decoration: none; padding: 12px; border-radius: 8px; border: 1px solid #d4af37; font-weight: bold; margin-top: 15px; }
 
-        /* 注意事項樣式 */
-        .notes-box { background: #fafafa; padding: 20px; border-radius: 10px; border-left: 5px solid #bbb; margin-top: 20px; }
-        .notes-title { font-weight: bold; margin-bottom: 10px; color: #555; }
-        .note-item { margin-bottom: 8px; font-size: 0.95rem; color: #666; }
+        .notes { font-size: 0.9rem; color: #666; background: #fafafa; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #ddd; }
+        footer { text-align: center; margin-top: 40px; font-size: 0.85rem; color: #999; padding: 20px; border-top: 1px solid #eee; }
 
-        footer { text-align: center; margin-top: 40px; padding: 30px 20px; border-top: 1px solid #ddd; font-size: 0.9rem; color: #777; background: #fff; border-radius: 12px;}
+        /* 隐藏语言块的魔法 */
+        .lang-zh { display: none; }
     </style>
 </head>
 <body>
-    <div class="main-header">
-        <span class="main-title-jp">第17回 新樹の会 ピアノ発表会</span>
-        <span class="main-title-zh">第17届 新树之会 钢琴发表会</span>
+
+    <div class="lang-switcher">
+        <button id="btn-zh" class="sw-btn" onclick="switchLang('zh')">中文版</button>
+        <button id="btn-jp" class="sw-btn" style="display:none;" onclick="switchLang('jp')">日本語版</button>
     </div>
 
-    <div class="section-container">
-        <div class="section-title">🇯🇵 日本語のご案内</div>
-        
-        <div class="info-row">
-            <span class="label">日時</span>
-            <div class="content">2026年 1月 24日 (土)</div>
+    <div id="section-jp" class="lang-jp">
+        <div class="header">
+            <div class="title">第17回 新樹の会 ピアノ発表会<br>開催のお知らせ</div>
         </div>
-
-        <div class="info-row">
-            <span class="label">当日のスケジュール</span>
-            <div class="content">
-                10:30 ～ 12:00　リハーサル<br>
-                12:30　開場<br>
-                13:00　開演<br>
-                16:00頃　終演予定
+        <div class="content-box">
+            <div class="info-row"><span class="label">日時</span>2026年 1月 24日 (土)</div>
+            <div class="content-box" style="box-shadow:none; padding:0;">
+                10:30～12:00 リハーサル / 12:30 開場 / 13:00 開演
+            </div>
+            <div class="info-row" style="border:none; margin-top:15px;">
+                <span class="label">会場</span>
+                グリーンスタジオ (生涯学習センター2F)<br>市川市鬼高1-1-4
+                <a href="google.com/maps/search/?api=1&query=千葉県市川市鬼高1-1-4+市川市生涯" target="_blank" class="map-btn">📍 Googleマップで開く</a>
             </div>
         </div>
-
-        <div class="info-row">
-            <span class="label">会場</span>
-            <div class="content">
-                グリーンスタジオ（生涯学習センター2F）<br>
-                千葉県市川市鬼高1-1-4
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=千葉県市川市鬼高1-1-4+市川市生涯学習センター" target="_blank" class="map-link">
-                        <span class="map-icon">📍</span>Googleマップで開く
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-row">
-            <span class="label">参加費・服装</span>
-            <div class="content">
-                参加費：￥6,000<br>
-                服装：自由
-            </div>
-        </div>
-
-        <div class="notes-box">
-            <div class="notes-title">【注意事項】</div>
-            <div class="note-item">• 全員の演奏終了後に集合写真の撮影をいたします。</div>
-            <div class="note-item">• 演奏の妨げにならないようご自由に写真をお撮りください。</div>
-            <div class="note-item">• 会場内での飲食は禁止です。</div>
+        <div class="notes">
+            【注意事項】全員の演奏終了後に集合写真を撮影します。会場内での飲食は禁止です。
         </div>
     </div>
 
-    <div class="section-container" style="background-color: #fffbf5;"> <div class="section-title">🇨🇳 中文说明</div>
-        
-        <div class="info-row">
-            <span class="label">日期</span>
-            <div class="content">2026年 1月 24日 (周六)</div>
+    <div id="section-zh" class="lang-zh">
+        <div class="header">
+            <div class="title">第17届 新树之会 钢琴发表会<br>举行通知</div>
         </div>
-
-        <div class="info-row">
-            <span class="label">当天流程安排</span>
-            <div class="content">
-                10:30 ～ 12:00　彩排 (Rehearsal)<br>
-                12:30　开场 (入场)<br>
-                13:00　开演 (正式开始)<br>
-                16:00左右　终演 (预计结束)
+        <div class="content-box">
+            <div class="info-row"><span class="label">日期</span>2026年 1月 24日 (周六)</div>
+            <div class="content-box" style="box-shadow:none; padding:0;">
+                10:30～12:00 彩排 / 12:30 入场 / 13:00 正式开演
+            </div>
+            <div class="info-row" style="border:none; margin-top:15px;">
+                <span class="label">会场</span>
+                Green Studio (生涯学习中心 2F)<br>市川市鬼高1-1-4
+                <a href="google.com/maps/search/?api=1&query=千葉県市川市鬼高1-1-4+市川市生涯" target="_blank" class="map-btn">📍 点击打开地图导航</a>
             </div>
         </div>
-
-        <div class="info-row">
-            <span class="label">会场地址</span>
-            <div class="content">
-                Green Studio (生涯学习中心 2F)<br>
-                千葉県市川市鬼高1-1-4
-                <div class="map-link-box" style="background-color: #fff3e0; border-color: #d4af37;">
-                    <a href="https://www.google.com/maps/search/?api=1&query=千葉県市川市鬼高1-1-4+市川市生涯学習センター" target="_blank" class="map-link">
-                        <span class="map-icon">📍</span>打开 Google 地图导航
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-row">
-            <span class="label">参加费與服装</span>
-            <div class="content">
-                参加费：￥6,000 日元<br>
-                服装：自由着装
-            </div>
-        </div>
-
-        <div class="notes-box" style="border-left-color: #d4af37;">
-            <div class="notes-title">【注意事项】</div>
-            <div class="note-item">• 所有演奏结束后将进行集体合影留念。</div>
-            <div class="note-item">• 在不影响他人演奏的前提下，您可以自由拍照。</div>
-            <div class="note-item">• 会场内禁止饮食。</div>
+        <div class="notes">
+            【注意事项】演奏结束后将拍摄集体合影。会场内严禁饮食。
         </div>
     </div>
 
     <footer>
-        <strong>福田ピアノ教室 (福田钢琴教室)</strong><br>
-        Email: f.chizuru.piano@gmail.com<br>
-        TEL: 090-8506-9663 (福田千鹤)
+        福田ピアノ教室 (福田钢琴教室)<br>
+        Email: f.chizuru.piano@gmail.com
     </footer>
+
+    <script>
+        function switchLang(lang) {
+            const jp = document.getElementById('section-jp');
+            const zh = document.getElementById('section-zh');
+            const btnJp = document.getElementById('btn-jp');
+            const btnZh = document.getElementById('btn-zh');
+
+            if (lang === 'zh') {
+                jp.style.display = 'none';
+                zh.style.display = 'block';
+                btnZh.style.display = 'none';
+                btnJp.style.display = 'inline-block';
+            } else {
+                jp.style.display = 'block';
+                zh.style.display = 'none';
+                btnZh.style.display = 'inline-block';
+                btnJp.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
