@@ -5,35 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第17回 ピアノ発表会 | 第17届 钢琴发表会</title>
     <style>
-        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; line-height: 1.7; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; line-height: 1.8; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fdfcf8; }
         
-        /* 切换按钮样式 */
+        /* 切替ボタン */
         .lang-switcher { text-align: right; margin-bottom: 20px; }
-        .sw-btn { background-color: #d4af37; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .sw-btn:hover { background-color: #b8962e; }
+        .sw-btn { background-color: #d4af37; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 0.95rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s; }
+        .sw-btn:hover { background-color: #b8962e; transform: translateY(-2px); }
 
-        .header { text-align: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid #d4af37; }
-        .title { font-size: 1.4rem; font-weight: bold; color: #8b4513; }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #d4af37; }
+        .title { font-size: 1.5rem; font-weight: bold; color: #8b4513; }
 
-        .content-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .content-box { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
         .info-row { margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
-        .label { font-weight: bold; color: #8b4513; display: block; margin-bottom: 3px; }
+        .label { font-weight: bold; color: #8b4513; display: block; margin-bottom: 5px; font-size: 1rem; }
         
-        /* 地图按钮 */
-        .map-btn { display: block; text-align: center; background-color: #fffaf0; color: #d4af37; text-decoration: none; padding: 12px; border-radius: 8px; border: 1px solid #d4af37; font-weight: bold; margin-top: 15px; }
+        /* 地図ボタン（立派なデザイン） */
+        .map-btn { display: flex; align-items: center; justify-content: center; background-color: #fffaf0; color: #d4af37; text-decoration: none; padding: 15px; border-radius: 10px; border: 2px solid #d4af37; font-weight: bold; margin-top: 20px; font-size: 1.1rem; transition: 0.3s; }
+        .map-btn:hover { background-color: #d4af37; color: white; }
 
-        .notes { font-size: 0.9rem; color: #666; background: #fafafa; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #ddd; }
-        footer { text-align: center; margin-top: 40px; font-size: 0.85rem; color: #999; padding: 20px; border-top: 1px solid #eee; }
+        .notes { font-size: 0.9rem; color: #555; background: #fafafa; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 5px solid #d4af37; line-height: 1.6; }
+        footer { text-align: center; margin-top: 50px; font-size: 0.85rem; color: #888; padding: 20px; border-top: 1px solid #eee; }
 
-        /* 隐藏语言块的魔法 */
+        /* 非表示設定 */
         .lang-zh { display: none; }
     </style>
 </head>
 <body>
 
     <div class="lang-switcher">
-        <button id="btn-zh" class="sw-btn" onclick="switchLang('zh')">中文版</button>
-        <button id="btn-jp" class="sw-btn" style="display:none;" onclick="switchLang('jp')">日本語版</button>
+        <button id="btn-zh" class="sw-btn" onclick="switchLang('zh')">🇨🇳 中文版に切り替え</button>
+        <button id="btn-jp" class="sw-btn" style="display:none;" onclick="switchLang('jp')">🇯🇵 日本語版に戻す</button>
     </div>
 
     <div id="section-jp" class="lang-jp">
@@ -42,17 +43,18 @@
         </div>
         <div class="content-box">
             <div class="info-row"><span class="label">日時</span>2026年 1月 24日 (土)</div>
-            <div class="content-box" style="box-shadow:none; padding:0;">
-                10:30～12:00 リハーサル / 12:30 開場 / 13:00 開演
-            </div>
-            <div class="info-row" style="border:none; margin-top:15px;">
+            <div class="info-row"><span class="label">スケジュール</span>10:30～12:00 リハーサル<br>12:30 開場 / 13:00 開演</div>
+            <div class="info-row" style="border:none;">
                 <span class="label">会場</span>
-                グリーンスタジオ (生涯学習センター2F)<br>市川市鬼高1-1-4
-                <a href="google.com/maps/search/?api=1&query=千葉県市川市鬼高1-1-4+市川市生涯" target="_blank" class="map-btn">📍 Googleマップで開く</a>
+                グリーンスタジオ (生涯学習センター2F)<br>千葉県市川市鬼高1-1-4
+                <a href="https://www.google.com/maps/search/?api=1&query=市川市生涯学習センター+グリーンスタジオ" target="_blank" class="map-btn">📍 Googleマップで開く</a>
             </div>
         </div>
         <div class="notes">
-            【注意事項】全員の演奏終了後に集合写真を撮影します。会場内での飲食は禁止です。
+            <strong>【注意事項】</strong><br>
+            ・全員の演奏終了後に集合写真を撮影します。<br>
+            ・演奏の妨げにならないようご自由に写真をお撮りください。<br>
+            ・会場内での飲食は禁止です。
         </div>
     </div>
 
@@ -62,23 +64,25 @@
         </div>
         <div class="content-box">
             <div class="info-row"><span class="label">日期</span>2026年 1月 24日 (周六)</div>
-            <div class="content-box" style="box-shadow:none; padding:0;">
-                10:30～12:00 彩排 / 12:30 入场 / 13:00 正式开演
-            </div>
-            <div class="info-row" style="border:none; margin-top:15px;">
+            <div class="info-row"><span class="label">时间安排</span>10:30～12:00 彩排<br>12:30 入场 / 13:00 正式开演</div>
+            <div class="info-row" style="border:none;">
                 <span class="label">会场</span>
-                Green Studio (生涯学习中心 2F)<br>市川市鬼高1-1-4
-                <a href="google.com/maps/search/?api=1&query=千葉県市川市鬼高1-1-4+市川市生涯" target="_blank" class="map-btn">📍 点击打开地图导航</a>
+                Green Studio (生涯学习中心 2F)<br>千葉県市川市鬼高1-1-4
+                <a href="https://www.google.com/maps/search/?api=1&query=市川市生涯学習センター+グリーンスタジオ" target="_blank" class="map-btn">📍 打开 Google 地图导航</a>
             </div>
         </div>
         <div class="notes">
-            【注意事项】演奏结束后将拍摄集体合影。会场内严禁饮食。
+            <strong>【注意事项】</strong><br>
+            ・演奏结束后将拍摄集体合影。<br>
+            ・在不影响他人的前提下，可以自由拍照。<br>
+            ・会场内禁止饮食。
         </div>
     </div>
 
     <footer>
         福田ピアノ教室 (福田钢琴教室)<br>
-        Email: f.chizuru.piano@gmail.com
+        Email: f.chizuru.piano@gmail.com<br>
+        TEL: 090-8506-9663
     </footer>
 
     <script>
@@ -99,6 +103,7 @@
                 btnZh.style.display = 'inline-block';
                 btnJp.style.display = 'none';
             }
+            window.scrollTo(0, 0); // 切り替え時に一番上へ戻る
         }
     </script>
 </body>
